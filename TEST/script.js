@@ -35,3 +35,14 @@ incr++;
 decr--;
 console.log(incr);
 console.log(decr);
+
+var a = 5;
+var a1=50;
+var b;
+b=a++;
+var b1=--a1;
+console.log("test");
+console.log(a);
+console.log(b);
+console.log(a1);
+console.log(b1);
