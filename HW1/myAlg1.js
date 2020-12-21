@@ -17,19 +17,61 @@ function isNumber (char){
 }
 
 
-let str = "1. U6 247 Y  03JAN LHRLIN HS1  1850         2135  O 05JAN       E SU";
-str = (str.replace(/\s+/g, ' ').trim()).toUpperCase(); //убираем лишние пробелы, делаем буквы большими
+let str = "1. U6 247 Y  03JAN LHRLIN HS1 1750  #1850         2135  O 05JAN       E SU";
+str = str.replace("#", " "); // убираем # в Галилео
+str = (str.replace(/\s+/g, ' ').trim()).toUpperCase() + " 0 0 0 0 0 0 0"; //убираем лишние пробелы, делаем буквы большими
 console.log(str);
 
 let airline,
-    flightNum;
+    flightNum,
+    dateDate,
+    dateMonth,
+    Origin,
+    destination,
+    depTime,
+    arrTime;
+ 
+let j, start, end;
 
-let start, end;
+for (let i = 0; i < str.length ; i++) {
+    if (isNumber(str[i]) && isNumber(str[i+1]) && isLetter(str[i+2]) && isLetter(str[i+3]) && isLetter(str[i+4])) {        
+        if (str[i + 2] + str[i + 3] + str[i + 4] == "JAN" ||
+        str[i + 2] + str[i + 3] + str[i + 4] == "FEB" || 
+        str[i + 2] + str[i + 3] + str[i + 4] == "MAR" ||
+        str[i + 2] + str[i + 3] + str[i + 4] == "APR" || 
+        str[i + 2] + str[i + 3] + str[i + 4] == "MAY" ||
+        str[i + 2] + str[i + 3] + str[i + 4] == "JUN" || 
+        str[i + 2] + str[i + 3] + str[i + 4] == "JUL" ||
+        str[i + 2] + str[i + 3] + str[i + 4] == "AUG" || 
+        str[i + 2] + str[i + 3] + str[i + 4] == "SEP" ||
+        str[i + 2] + str[i + 3] + str[i + 4] == "OCT" || 
+        str[i + 2] + str[i + 3] + str[i + 4] == "NOV" ||
+        str[i + 2] + str[i + 3] + str[i + 4] == "DEC" ) {
+            dateDate = str[i] + str[i + 1];
+            dateMonth = str[i + 2] + str[i + 3] + str[i + 4];    
+            for (let j = i+5;j < i+10; j++){
+                if (isLetter(str[j]) && isLetter(str[j+1]) && isLetter(str[j+2]) && 
+                isLetter(str[j+3]) && isLetter(str[j+4]) && isLetter(str[j+5])){
+                    Origin = str[j] + str[j + 1] + str[j + 2];
+                    destination = str[j + 3] + str[j + 4] + str[j + 5];
+                    let k = j + 11;
+                    for (let n = j + 31; n > k; n--) {
+                        if(isNumber(str[n-3]+str[n-2]+str[n-1]+str[n]) && str[n-4] == " " && isNumber(str[n-8]+str[n-7]+str[n-6]+str[n-5])){
+                            depTime = str[n-8]+str[n-7]+str[n-6]+str[n-5];
+                            arrTime = str[n-3]+str[n-2]+str[n-1]+str[n];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 
-for (let k = 0; k < 10; k++){
+for (let k = 0; k < 10; k++){              // Airline + Flight number 
     if (str[k] != " " && str[k+1] != " "){
-        if (str[k].toString().toUpperCase() != str[k].toString().toLowerCase() && str[k+1].toString().toUpperCase() != str[k+1].toString().toLowerCase()){
+        if (isLetter(str[k]) && isLetter(str[k+1])){
             airline = str[k] + str[k+1]; 
 
             if (str[k+2] != " "){
@@ -49,7 +91,7 @@ for (let k = 0; k < 10; k++){
             }  
             break; 
         } 
-        if (str[k].toString().toUpperCase() != str[k].toString().toLowerCase() && isFinite(str[k+1])){
+        if (isLetter(str[k]) && isFinite(str[k+1])){
             airline = str[k] + str[k+1];  
             if (str[k+2] != " "){
                 start = k+2;
@@ -68,7 +110,7 @@ for (let k = 0; k < 10; k++){
             } 
             break;  
         }
-        if (isFinite(str[k]) && str[k+1].toString().toUpperCase() != str[k+1].toString().toLowerCase()){
+        if (isFinite(str[k]) && isLetter(str[k+1])){
             airline = str[k] + str[k+1]; 
             if (str[k+2] != " "){
                 start = k+2;
@@ -86,157 +128,24 @@ for (let k = 0; k < 10; k++){
                 }
             } 
             break;   
-        }
-        
+        }        
     }
 }
 
-
-console.log(airline);
-console.log(flightNum);
-
-
-
-
-let char = 1;
-char.toString();
-let upChar = char.toString().toUpperCase();
-let lowChar = char.toString().toLowerCase();
-
-
-////!!!!
-if (char.toString().toUpperCase() == char.toString().toLowerCase()){
-    console.log("Это не буква");
-
-}
-else {
-    console.log("Это буква");
-}
+console.log("Day: " + dateDate);
+console.log("Month: " + dateMonth);
+console.log("Airline: " + airline);
+console.log("Flight number: " + flightNum);
+console.log("Origin: " + Origin);
+console.log("Destination: " + destination);
+console.log("Departure time: " + depTime);
+console.log("Arrival time: " + arrTime);
 
 
 
 
-if (upChar == lowChar){
-    console.log("Это не буква");
-}
 
 
 
-char = char.toUpperCase();
-console.log(char);
-char = char.toLowerCase();
-console.log(char);
 
 
-function isLetter(char) {
-    return char != char.toUpperCase();
-  }
-
-let boolCase = isLetter(char);
-
-console.log(boolCase);
-
-
-let boolBlank = isNaN(" ");
-let bool1 = isNaN("1");
-let boolA = isNaN("A");
-let boolCheck = char.match(/[a-z]/i);
-
-console.log(boolCheck);
-
-console.log(boolBlank);
-console.log(bool1);
-console.log(boolA);
-
-
-// function isLetter(str1) {
-//     return str1.match(/[a-z]/i);
-//   }
-
-//   for ( let i = 0; i<20; i++) {
-//       if(isLetter(str)){
-//           console.log(str[i]);
-//       }
-//   }
-
-
-// let date = {};
-// for (let i=4; i< str.length-15; i++) {
-//  if (str[i] == " "){
-//      i++;
-// } else if(Number.isInteger(+str[i]) && Number.isInteger(+str[i+1])){
-//     console.log(str[i] + str[i+1]); 
-//  }
-// }
-
-let str = "1. U6 247 Y  03mAr OLBLIN HS1  1850         2135  O 05JAN       E SU";
-str = (str.replace(/\s+/g, ' ').trim()).toUpperCase(); //убираем лишние пробелы, делаем буквы большимиconsole.log(str);
-
-function isLetter (char){
-    if (char.toString().toUpperCase() != char.toString().toLowerCase()){
-        return true;
-    }
-    else {
-    return false;
-    }
-}
-
-function isNumber (char){
-    if (isFinite(char) && char != " "){
-        return true;
-    }
-    else {
-    return false;
-    }
-}
-
-let dateDate;
-let dateMonth;
-let Origin;
-let destination;
-
-for (let i = 0; i < str.length - 15; i++) {
-    if (isNumber(str[i]) && isNumber(str[i+1]) && isLetter(str[i + 2]) && isLetter(str[i + 3]) && isLetter(str[i + 4])) {        
-        if (str[i + 2] + str[i + 3] + str[i + 4] == "JAN" ||
-        str[i + 2] + str[i + 3] + str[i + 4] == "FEB" || 
-        str[i + 2] + str[i + 3] + str[i + 4] == "MAR" ||
-        str[i + 2] + str[i + 3] + str[i + 4] == "APR" || 
-        str[i + 2] + str[i + 3] + str[i + 4] == "MAY" ||
-        str[i + 2] + str[i + 3] + str[i + 4] == "JUN" || 
-        str[i + 2] + str[i + 3] + str[i + 4] == "JUL" ||
-        str[i + 2] + str[i + 3] + str[i + 4] == "AUG" || 
-        str[i + 2] + str[i + 3] + str[i + 4] == "SEP" ||
-        str[i + 2] + str[i + 3] + str[i + 4] == "OCT" || 
-        str[i + 2] + str[i + 3] + str[i + 4] == "NOV" ||
-        str[i + 2] + str[i + 3] + str[i + 4] == "DEC" ) {
-            dateDate = str[i] + str[i + 1];
-            dateMonth = str[i + 2] + str[i + 3] + str[i + 4]; 
-                let j = i;
-                for (j+5;j < i+9; j++){
-                    if (isLetter(str[j + 5]) && isLetter(str[j + 6]) && isLetter(str[j + 7]) && 
-                    isLetter(str[j + 8]) && isLetter(str[j + 9]) && isLetter(str[j + 10])){
-                        Origin = str[j + 5] + str[j + 6] + str[j + 7];
-                        destination = str[j + 8] + str[j + 9] + str[j + 10];
-                    }
-                }
-        }
-    }
-}
-
-
-
-// for (let i = 4; i < str.length - 15; i++) {
-//     if (isFinite(str[i]) && isFinite(str[i + 1]) && !isFinite(str[i + 2]) && str[i] != " ") {        
-//         if (str[i + 2] + str[i + 3] + str[i + 4] == "JAN") {
-//             dateDate = str[i] + str[i + 1];
-//             dateMonth = str[i + 2] + str[i + 3] + str[i + 4];
-
-           
-//         }
-//     }
-// }
-
-console.log(dateDate);
-console.log(dateMonth);
-console.log(Origin);
-console.log(destination);
