@@ -94,9 +94,15 @@ for (let key in appData) {
 }
 
 
-
+for (let key in appData) {
+    console.log("Наша программа включает в себя данные: " + key + " - " + appData[key]);
+}
 
 
 // console.log(appData);
 
 
+console.log(parseInt("15px",10));
+console.log("sdfsd"[2]);
+console.log(0 || "" || 2 || undefined || true || falsе);
+console.log(2 && 3);

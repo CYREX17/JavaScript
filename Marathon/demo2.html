@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+
+        <script>
+			let movies = [
+				{
+					poster: 'https://upload.wikimedia.org/wikipedia/en/5/5f/The_Naked_Gun_Poster.jpg',
+					title: 'naked gun',
+					duration: 120,
+					mainRole: 'Leslie Nilsen',
+					link: 'https://en.wikipedia.org/wiki/Lethal_Weapon_2'
+
+				},
+				{
+					poster: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Nakedguntrilogy.jpg/215px-Nakedguntrilogy.jpg',
+					title: 'naked gun2',
+					duration: 90,
+					mainRole: 'Leslie Nilsen',
+					link: 'https://en.wikipedia.org/wiki/Lethal_Weapon_2'
+
+				},
+				{
+					poster: 'https://images-na.ssl-images-amazon.com/images/I/91l0P4WaavL._AC_SX342_.jpg',
+					title: 'naked gun3',
+					duration: 87,
+					mainRole: 'Leslie Nilsen',
+					link: 'https://en.wikipedia.org/wiki/Lethal_Weapon_2'
+				},
+				{
+					poster: 'https://upload.wikimedia.org/wikipedia/en/d/d9/Lethal_weapon1.jpg',
+					title: 'lethal weapon',
+					duration: 95,
+					mainRole: 'Mel Gibson',
+					link: 'https://en.wikipedia.org/wiki/Lethal_Weapon_2'
+				},
+				{
+					poster: 'https://upload.wikimedia.org/wikipedia/en/6/67/Lethal_Weapon_2_Poster.jpg',
+					title: 'lethal weapon2',
+					duration: 95,
+					mainRole: 'Mel Gibson',
+					link: 'https://en.wikipedia.org/wiki/Lethal_Weapon_2'
+				}
+			];
+
+
+			console.log(movies.length);
+
+			for (let i = 0; i < movies.length; i++) {
+				document.write(
+					`<div>
+						<h2><a href="${movies[i].link}">${movies[i].title}</a></h2>
+						<img src="${movies[i].poster}">
+                        <p>main role - ${movies[i].mainRole}, duration - ${movies[i].duration}</p>
+					</div>`
+				);
+			}
+
+			let cars = [
+				{model: '', volume: 123, manufacturer: '', img : ''},
+				{model: '', volume: 123, manufacturer: '', img : ''},
+				{model: '', volume: 123, manufacturer: '', img : ''},
+				{model: '', volume: 123, manufacturer: '', img : ''},
+				{model: '', volume: 123, manufacturer: '', img : ''},
+				{model: '', volume: 123, manufacturer: '', img : ''}
+
+			];
+
+
+        </script>
+
+    </body>
+</html>
