@@ -18,7 +18,9 @@ function isNumber (char){
 
 
 let str = "1. U6 247 Y  03JAN LHRLIN HS1 1750  #1850         2135  O 05JAN       E SU";
-str = str.replace("#", " "); // убираем # в Галилео
+
+//str = str.replace("#", " "); // убираем # в Галилео
+str = str.replace(/#/g, " "); // убираем # в Галилео
 str = (str.replace(/\s+/g, ' ').trim()).toUpperCase() + " 0 0 0 0 0 0 0"; //убираем лишние пробелы, делаем буквы большими
 console.log(str);
 

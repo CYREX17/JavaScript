@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            button {
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+
+
+        <button id="btn">click me</button>
+
+        <input type="text" id="inpt" placeholder="demo text">
+
+
+        <script>
+			// function calculator(a, b) {
+			// 	let result = a + b;
+			// 	console.log(result);
+			// }
+			//
+			// calculator(10, 20);
+			//
+			// calculator(100, 200);
+
+
+			let btn = document.getElementById('btn');
+			colorDefault = 'white';
+			flag = true;
+			btn.onclick = function () {
+				if (flag) {
+					btn.style.background = 'tomato';
+				} else {
+					btn.style.background = colorDefault;
+				}
+				flag = !flag;
+
+			};
+
+			let inpt = document.getElementById('inpt');
+			inpt.oninput = function () {
+				console.log(inpt.value);
+				btn.innerText = inpt.value;
+				btn.style.background = inpt.value;
+
+			};
+
+
+        </script>
+    </body>
+</html>
