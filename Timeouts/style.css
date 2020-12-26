@@ -15,8 +15,9 @@
 .box {
     width: 140px;
     height: 140px;
-    background-color: blue;
+    background-color: rgb(41, 163, 143);
     position: relative;
+    border-radius: 100%;
     top: 0;
 }
 

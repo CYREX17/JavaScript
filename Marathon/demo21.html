@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+
+        <script>
+
+			// function calculator(a, b) {
+			// 	let result = a + b;
+			// 	console.log(result);
+			// }
+			// calculator(10,20)
+			// calculator(22,65498)
+
+			function calc(num1, num2, action) {
+				let result;
+				if (action === '+') {
+					result = num1 + num2;
+				} else if (action === '-') {
+					result = num1 - num2;
+				}
+				console.log(result);
+			}
+
+			calc(10, 20, '+');
+			calc(10, 20, '-');
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+        <!--        <input id="inpt" type="text" oninput="inputReader()">-->
+        <input id="inpt1" type="number">
+        <input id="inpt2" type="number">
+        <input id="inpt3" type="number">
+        <button id="btn">calculate</button>
+
+        <script>
+
+			// let input = document.getElementById('inpt');
+			//
+			// function inputReader() {
+			// 	input.style.background = input.value;
+			//
+			// }
+
+			let btn = document.getElementById('btn');
+			btn.onclick = function () {
+				let input1 = document.getElementById('inpt1');
+				let input2 = document.getElementById('inpt2');
+				let input3 = document.getElementById('inpt3');
+				let num1 = +input1.value;
+				let num2 = +input2.value;
+				let num3 = +input3.value;
+				let result = num1 + num2 + num3;
+				console.log(result);
+			};
+
+        </script>
+
+    </body>
+</html>

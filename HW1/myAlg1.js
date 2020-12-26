@@ -17,9 +17,28 @@ function isNumber (char){
 }
 
 
-let str = "1. U6 247 Y  03JAN LHRLIN HS1 1750  #1850         2135  O 05JAN       E SU";
+let str = "1. U6 247 Y  03JAN LHRLIN HS1 1750  #1850         2135  O 05JAN       E SU 1. U6 247 Y  03JAN LHRLIN HS1 1750  #1850         2135  O 05JAN       E SU";
+str = str.replace(/#/g, " "); // убираем # в Галилео
+str = (str.replace(/\s+/g, ' ').trim()).toUpperCase() + " 0 0 0 0 0 0 0"; //убираем лишние пробелы, делаем буквы большими
 
+while (str.search(/\d\d\d\d \d\d\d\d \d\d\d\d/) > 0)
+{
+    str = str.substr(0, str.search(/\d\d\d\d \d\d\d\d \d\d\d\d/)) + str.substr(str.search(/\d\d\d\d \d\d\d\d \d\d\d\d/)+5);
+}
+
+console.log (str);
+
+let ans = str.match(/\d\d\d\d \d\d\d\d \d\d\d\d/g);
+
+
+for (let i = 0; i < str.length-20; i++) {
+    if (isNumber(str[i]+str[i+1]+str[i+2]+str[i+3]) && isNumber(str[i+5]+str[i+6]+str[i+7]+str[i+8]) && isNumber(str[i+10]+str[i+11]+str[i+12]+str[i+13])) {
+        str = str.substr(0, i) + "   " +  str.substr(i+5);
+    }
+}
+console.log(str);
 //str = str.replace("#", " "); // убираем # в Галилео
+str = str.replace(/ \w /g, " "); // убираем класс бронирования
 str = str.replace(/#/g, " "); // убираем # в Галилео
 str = (str.replace(/\s+/g, ' ').trim()).toUpperCase() + " 0 0 0 0 0 0 0"; //убираем лишние пробелы, делаем буквы большими
 console.log(str);
